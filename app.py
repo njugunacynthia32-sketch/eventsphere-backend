@@ -13,6 +13,7 @@ from models.category import Category
 from models.reminder import Reminder
 
 from routes.auth import auth_bp
+from routes.event import event_bp
 
 load_dotenv()
 
@@ -31,12 +32,11 @@ def create_app():
     jwt.init_app(app)
 
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
+    app.register_blueprint(event_bp, url_prefix="/api/events")
 
     @app.route("/")
     def home():
-        return {
-            "message": "Welcome to EventSphere API"
-        }
+        return {"message": "Welcome to EventSphere API"}
 
     return app
 
@@ -45,3 +45,4 @@ app = create_app()
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
