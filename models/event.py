@@ -3,6 +3,8 @@ from models.attendance import attendance
 
 
 class Event(db.Model):
+
+    # model for events table
     __tablename__ = "events"
 
     id = db.Column(db.Integer, primary_key=True)
